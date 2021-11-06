@@ -1,4 +1,4 @@
-directions = ['R', 'D', 'L', 'U']
+directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 snake = []
 commands = []
 
@@ -11,36 +11,25 @@ for idx in range(k):
     board[int(i) - 1][int(j) - 1] = 1
 
 L = int(input())
+dict = {}
 for i in range(L):
     X, C = input().split()
-    dict = {"count": int(X), "direction": C}
-    commands.append(dict)
+    dict[int(X)] = C
 
 i, j, d = 0, -1, 0
-count, lifeCount = 0, 0
-dir = ''
+lifeCount = 0, 0
 
 while True:
-
-    if lifeCount == count + 1:
-        if dir == 'D':
+    if lifeCount in dict.keys():
+        if dict[lifeCount] == 'D':
             d += 1
-        elif dir == 'L':
+        elif dict[lifeCount] == 'L':
             d -= 1
 
-        if commands:
-            command = commands.pop(0)
-            count = command["count"]
-            dir = command["direction"]
+    i += directions[d % 4][0]
+    j += directions[d % 4][1]
 
-    if directions[d % 4] == 'R':
-        j += 1
-    elif directions[d % 4] == 'D':
-        i += 1
-    elif directions[d % 4] == 'L':
-        j -= 1
-    elif directions[d % 4] == 'U':
-        i -= 1
+    lifeCount += 1
 
     if i >= n or j >= n or i < 0 or j < 0:
         break
@@ -53,6 +42,5 @@ while True:
     if board[i][j] != 1 and len(snake) > 1:
         snake.pop(0)
 
-    lifeCount += 1
 
 print(lifeCount)
