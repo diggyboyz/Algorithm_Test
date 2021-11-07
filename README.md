@@ -27,3 +27,6 @@
 |1-1|뱀|https://www.acmicpc.net/problem/3190|
 |1-2|톱니바퀴|https://www.acmicpc.net/problem/14891|
 |1-3|치킨 배달|https://www.acmicpc.net/problem/15686|
+|2-1|조이스틱|https://programmers.co.kr/learn/courses/30/lessons/42860|
+|2-2|N으로 표현|https://programmers.co.kr/learn/courses/30/lessons/42895|
+|2-3|타겟 넘버|https://programmers.co.kr/learn/courses/30/lessons/43165|
