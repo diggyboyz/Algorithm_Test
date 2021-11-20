@@ -30,3 +30,4 @@
 |2-1|조이스틱|https://programmers.co.kr/learn/courses/30/lessons/42860|
 |2-2|N으로 표현|https://programmers.co.kr/learn/courses/30/lessons/42895|
 |2-3|타겟 넘버|https://programmers.co.kr/learn/courses/30/lessons/43165|
+|3-1|B+tree|https://github.com/diggyboyz/Algorithm_Test/issues/6|
