@@ -31,3 +31,6 @@
 |2-2|N으로 표현|https://programmers.co.kr/learn/courses/30/lessons/42895|
 |2-3|타겟 넘버|https://programmers.co.kr/learn/courses/30/lessons/43165|
 |3-1|B+tree|https://github.com/diggyboyz/Algorithm_Test/issues/6|
+|4-1|인구 이동|https://www.acmicpc.net/problem/16234
+|4-2|스타트링크|https://www.acmicpc.net/problem/5014
+|4-3|아기상어|https://www.acmicpc.net/problem/16236
