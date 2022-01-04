@@ -33,4 +33,5 @@
 |3-1|B+tree|https://github.com/diggyboyz/Algorithm_Test/issues/6|
 |4-1|인구 이동|https://www.acmicpc.net/problem/16234
 |4-2|스타트링크|https://www.acmicpc.net/problem/5014
-|4-3|아기상어|https://www.acmicpc.net/problem/16236
+|5-1|아기상어|https://www.acmicpc.net/problem/16236
+|5-2|2048(Easy)|https://www.acmicpc.net/problem/12100
