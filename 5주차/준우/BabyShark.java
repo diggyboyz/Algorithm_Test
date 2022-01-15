@@ -22,11 +22,11 @@ public class BabyShark {
 	static int[] tempSharkLocation = new int[2];
 	static LinkedHashSet<int[]> sharkLocationSet = new LinkedHashSet<int[]>();
 	static ArrayList<int[]> sharkLocationList= new ArrayList<int[]>();
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		n = Integer.parseInt(st.nextToken());
 		space = new int[n][n];
@@ -56,17 +56,17 @@ public class BabyShark {
 			//showCurrentSharkLocationSet();			
 			if (checkEat()) {
 				//가장위,가장왼쪽찾는 함수
-				calculateCoord();
+				calculateCoord();				
 				eatCount++;
 				resetVisitedArray();				
 				calculateTime();
 				changeSharkLocation();
 				sharkLocationSet.clear();
 				saveSharkLocationSet();
-				showCurrentSpace();											
+				//showCurrentSpace();											
 			} else {
 				if (visitedAllTrue()) {
-					System.out.println("visitedAllTrue");
+					//System.out.println("visitedAllTrue");
 					break;
 				}
 				updateSharkLocationSet();
@@ -142,22 +142,22 @@ public class BabyShark {
 
 	static void tempSharkMove(int i, int j) {
 		//saveSharkLocationSet()에서 이미 i,j의 위치를 변경해서 넘겨줬기 때문에 다시 i와j의 위치를 변경해서 저장
-		int[] tempSpacePoint = new int[2];
-		tempSpacePoint[0] = j;
-		tempSpacePoint[1] = i;		
-		sharkLocationSet.add(tempSpacePoint);
+		int[] tempCoord = new int[2];
+		tempCoord[0] = j;
+		tempCoord[1] = i;		
+		sharkLocationSet.add(tempCoord);
 		visited[j][i] = true;
 		
 	}
 
 	static boolean checkEat() {
 		int tempI;
-		int tempJ;
-		int[] tempCoord = new int[2];
+		int tempJ;		
 		boolean eatFlag = false;
 		Iterator<int[]> iter = sharkLocationSet.iterator();		
 		int[] tempLocationArray = new int[2];
 		while (iter.hasNext()) {
+			int[] tempCoord = new int[2];
 			tempLocationArray = iter.next();			
 			tempI = tempLocationArray[0];
 			tempJ = tempLocationArray[1];
@@ -166,7 +166,11 @@ public class BabyShark {
 				tempSharkLocation[0] = tempI;
 				tempSharkLocation[1] = tempJ;
 				eatFlag = true;
-				sharkLocationList.add(tempSharkLocation);
+				tempCoord[0] = tempI;
+				tempCoord[1] = tempJ;
+				//System.out.println(":" + tempCoord[0] + " " + tempCoord[1]);
+				sharkLocationList.add(tempCoord);
+				
 				
 			}
 
@@ -187,27 +191,26 @@ public class BabyShark {
 		int minJ = tempCoord[1];
 		for(int i=0; i<sharkLocationList.size(); i++) {
 			tempCoord = sharkLocationList.get(i);
-			System.out.println(tempCoord[0]+ " " + tempCoord[1]);
-		}
-		/*
-		if(setToList.size() >= 1) {
-			for(int i=1; i<setToList.size(); i++) {
-				tempCoord = setToList.get(i);						
-				if(minI > tempCoord[0]) {
+			//System.out.println("test: " + tempCoord[0] + " " + tempCoord[1]);
+			if(minI > tempCoord[0]) {
+				minI = tempCoord[0];
+				minJ = tempCoord[1];
+			}
+			else if(minI == tempCoord[0]) {
+				if(minJ > tempCoord[1]) {
 					minI = tempCoord[0];
 					minJ = tempCoord[1];
 				}
-				else if(minI == tempCoord[0]) {
-					if(minJ > tempCoord[1]) {
-						minI = tempCoord[0];
-						minJ = tempCoord[1];
-					}
-				}
 			}
-		}
+			else {
+				continue;
+			}			
+			
+		}		
 		tempSharkLocation[0] = minI;
 		tempSharkLocation[1] = minJ;
-		*/
+		sharkLocationList.clear();
+		
 	}
 	static void resetVisitedArray() {
 		for (int i = 0; i < n; i++) {
@@ -226,8 +229,8 @@ public class BabyShark {
 		int currentJ = currentSharkLocation[1];
 		int tempI = tempSharkLocation[0];
 		int tempJ = tempSharkLocation[1];
-		System.out.println(currentSharkLocation[0] + " " + currentSharkLocation[1]);
-		System.out.println(tempSharkLocation[0]+ " " + tempSharkLocation[1]);
+		//System.out.println(currentSharkLocation[0] + " " + currentSharkLocation[1]);
+		//System.out.println(tempSharkLocation[0]+ " " + tempSharkLocation[1]);
 								
 		if(sharkSize == eatCount) {
 			sharkSize++;
@@ -245,20 +248,20 @@ public class BabyShark {
 	static void calculateTime() {		
 		time = time + tempCount;
 		tempCount = 1;
-		System.out.println("시간:"+ time);
+		//System.out.println("시간:"+ time);
 	}
 
 	static void updateSharkLocationSet() {
 		Iterator<int[]> iter = sharkLocationSet.iterator();
 		ArrayList<int[]> tempArrayList = new ArrayList<int[]>(sharkLocationSet);
-		int[] tempLocationArray = new int[2];
+		int[] tempCoord = new int[2];
 
 		for (int i = 0; i < tempArrayList.size(); i++) {
-			tempLocationArray = tempArrayList.get(i);			
-			tempSharkLocation[0] = tempLocationArray[0];
-			tempSharkLocation[1] = tempLocationArray[1];
+			tempCoord = tempArrayList.get(i);			
+			tempSharkLocation[0] = tempCoord[0];
+			tempSharkLocation[1] = tempCoord[1];
 			saveSharkLocationSet();
-			sharkLocationSet.remove(tempLocationArray);
+			sharkLocationSet.remove(tempCoord);
 		}
 		
 	}
