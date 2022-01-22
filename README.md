@@ -35,3 +35,5 @@
 |4-2|스타트링크|https://www.acmicpc.net/problem/5014
 |5-1|아기상어|https://www.acmicpc.net/problem/16236
 |5-2|2048(Easy)|https://www.acmicpc.net/problem/12100
+|6-1|평범한 배낭|https://www.acmicpc.net/problem/12865
+|6-2|가운데를 말해요|https://www.acmicpc.net/problem/1655
